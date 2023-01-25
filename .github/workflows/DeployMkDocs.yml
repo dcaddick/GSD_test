@@ -11,10 +11,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: setup python
-      run: |
-        python -m venv venv
-        source venv/bin/activate
-        pip install mkdocs
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+    - name: Install mkdocs
+      run: pip install mkdocs
     - name: Build
       run: mkdocs build
     - name: Deploy
