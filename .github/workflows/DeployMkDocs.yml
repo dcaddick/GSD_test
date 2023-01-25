@@ -15,7 +15,9 @@ jobs:
       with:
         python-version: 3.x
     - name: Install mkdocs
+      run: pip install --upgrade pip
       run: pip install mkdocs
+      run: pip install mkdocs-material
     - name: Build
       run: mkdocs build
     - name: Deploy
