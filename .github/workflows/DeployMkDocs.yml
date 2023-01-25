@@ -1,16 +1,24 @@
-name: Publish docs via GitHub Pages
+name: Deploy to GitHub Pages
 on:
   push:
     branches:
       - main
 
 jobs:
-  build:
-    name: Deploy docs
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main
-        uses: actions/checkout@v2
-
-      - name: Deploy docs
-        uses: mhausenblas/mkdocs-deploy-gh-pages@master
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: setup python
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+        pip install mkdocs
+    - name: Build
+      run: mkdocs build
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        publish_dir: ./site
