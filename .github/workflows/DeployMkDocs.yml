@@ -21,6 +21,9 @@ jobs:
            pip install mkdocs-git-authors-plugin
            pip install mkdocs-git-revision-date-localized-plugin
            pip install mkdocs-git-committers-plugin
+           pip install mkdocs-glightbox
+           pip install mkdocs-img2fig-plugin
+           pip install mkdocs-mermaid2-plugin
     - name: Build
       run: mkdocs build
     - name: Deploy
