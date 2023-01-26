@@ -17,6 +17,7 @@ jobs:
     - name: Install mkdocs
       run: pip install --upgrade pip
            pip install mkdocs
+           mkdocs --version
            pip install mkdocs-material
            pip install mkdocs-git-authors-plugin
            pip install mkdocs-git-revision-date-plugin
@@ -31,5 +32,5 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public
+        publish_dir: ./site
 
