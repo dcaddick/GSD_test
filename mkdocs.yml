@@ -68,7 +68,7 @@ theme:
 # Plugins
 plugins:
   - search
-  - simple
+  #- simple
   - git-authors
   - git-revision-date
   - git-revision-date-localized:
