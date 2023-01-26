@@ -31,5 +31,5 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        deploy_key: ${{ secrets.GITHUB_TOKEN }}
+        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         publish_dir: ./site
