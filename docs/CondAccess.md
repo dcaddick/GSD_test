@@ -16,7 +16,6 @@ Result:
     [View 14 x CA Policy Templates](https://portal.azure.com/#view/Microsoft_AAD_ConditionalAccess/CaTemplates.ReactView)
 * Larger implmentations - please take the time to review the process below to enable via "CA-as-Code" as the ROI is well worth it - especially if doing it for more than one customer or tenant :wink:
 
-
 ## Enable Telemetry
 !!! warning "**NOTE: please be aware there is no inherent "BLOCK" by default**"
     You need to make sure you are BLOCKING by default unless explicitly allowing access - walk thru the 14 default Policies to better understand this. To make sure that you are fully covered please use this PowerBI based tool **<https://github.com/AzureAD/AzureADAssessment>** 
