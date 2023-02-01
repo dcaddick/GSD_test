@@ -34,5 +34,7 @@ jobs:
     #    #publish_dir: ./site
         
     - name: Deploy to GitHub Pages
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
       id: deployment
       uses: actions/deploy-pages@v1
