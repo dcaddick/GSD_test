@@ -27,6 +27,15 @@ jobs:
            pip install mkdocs-mermaid2-plugin
     - name: Build
       run: mkdocs build
+
+    - name: Git branch
+      run: git branch
+      
+    - name: Git version
+      run: git version
+
+    - name: Set Git
+      run: git config --global --add safe.directory /github/workspace
       
     - name: Deploy docs
       uses: mhausenblas/mkdocs-deploy-gh-pages@master
