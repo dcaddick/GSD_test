@@ -27,6 +27,7 @@ jobs:
            pip install mkdocs-mermaid2-plugin
     - name: Build
       run: mkdocs build
+    - name: Deploy
       run: mkdocs gh-deploy --force
     #- name: Deploy
     #  uses: peaceiris/actions-gh-pages@v3
