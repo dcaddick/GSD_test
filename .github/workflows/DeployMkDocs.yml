@@ -27,8 +27,14 @@ jobs:
            pip install mkdocs-mermaid2-plugin
     - name: Build
       run: mkdocs build
-    - name: Deploy
-      run: mkdocs gh-deploy --force
+      
+    - name: Deploy docs
+      uses: mhausenblas/mkdocs-deploy-gh-pages@master
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         
+    #- name: Deploy
+    #  run: mkdocs gh-deploy --force
+      
     #- name: Deploy
     #  uses: peaceiris/actions-gh-pages@v3
     #  with:
