@@ -1,50 +1,24 @@
-name: Deploy to GitHub Pages
+name: MkDocs Deploy
 on:
   push:
     branches:
-      - main
+    - main
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: setup python
-      uses: actions/setup-python@v4.5.0
+    - uses: actions/setup-python@v3
       with:
-        python-version: 3.x
-    - name: Install mkdocs
-      run: pip install --upgrade pip
-           pip install mkdocs
-           mkdocs --version
-           pip install mkdocs-material
-           pip install mkdocs-git-revision-date-plugin
-           pip install mkdocs-git-revision-date-localized-plugin
-           pip install mkdocs-git-committers-plugin
-           pip install mkdocs-glightbox
-           pip install mkdocs-img2fig-plugin
-           pip install mkdocs-mermaid2-plugin
-    - name: Build
-      run: mkdocs build
-
-    - name: Git branch
-      run: git branch
-      
-    - name: Git version
-      run: git version
-
-    - name: Set Git
-      run: git config --global --add safe.directory /github/workspace
-      
-    - name: Deploy docs
-      uses: mhausenblas/mkdocs-deploy-gh-pages@master
-    #      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-         
-    #- name: Deploy
-    #  run: mkdocs gh-deploy --force
-      
-    #- name: Deploy
-    #  uses: peaceiris/actions-gh-pages@v3
-    #  with:
-    #    github_token: ${{ secrets.GITHUB_TOKEN }}
-    #    #publish_dir: ./site
+        python-version: 3.7
+    - uses: actions/checkout@master
+      with:
+        fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+    - name: Build and Commit
+      uses: iSOLveIT/mkdocs-notes@main
+      with:
+        config_file_path: mkdocs.yml
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: site
